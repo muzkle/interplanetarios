@@ -23,7 +23,10 @@ client.on('message', msg => {
 
         args = args.splice(1);
         switch (cmd) {
-            // !ping
+            // comandos
+            case 'comandos':
+                msg.reply('Aqui serão listados todos os comandos disponíveis!');
+                // !ping
             case 'ping':
                 msg.reply('Pong!');
                 break;
