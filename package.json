@@ -4,6 +4,9 @@
     "description": "bot de fila Interplanetários",
     "main": "bot.js",
     "author": "Vanghgrog",
+    "scripts": {
+        "start": "node bot.js"
+    },
     "dependencies": {
         "discord.io": "^2.5.3",
         "discord.js": "^11.3.2",
