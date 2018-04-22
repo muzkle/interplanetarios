@@ -26,6 +26,7 @@ client.on('message', msg => {
             // comandos
             case 'comandos':
                 msg.reply('Aqui serão listados todos os comandos disponíveis!');
+                break;
                 // !ping
             case 'ping':
                 msg.reply('Pong!');
