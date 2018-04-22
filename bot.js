@@ -1,6 +1,12 @@
 const Discord = require('discord.js');
 var logger = require('winston');
 const client = new Discord.Client();
+var http = require('http');
+
+http.createServer(function(request, response) {
+    console.log('request starting for bot');
+}).listen(process.env.PORT || 5000);
+
 // Configure logger settings
 logger.remove(logger.transports.Console);
 logger.add(logger.transports.Console, {
