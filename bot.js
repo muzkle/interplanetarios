@@ -43,4 +43,4 @@ client.on('message', msg => {
 });
 
 client.login(process.env.BOT_TOKEN);
-client.SetGame("use *comandos");
+client.user.setGame('use *comandos')
