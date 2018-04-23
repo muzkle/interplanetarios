@@ -2,6 +2,8 @@ const Discord = require('discord.js');
 var logger = require('winston');
 const client = new Discord.Client();
 var http = require('http');
+var twitch = require("twitch.tv");
+var request = require('request');
 
 http.createServer(function(request, response) {
     console.log('request starting for bot');
@@ -14,11 +16,14 @@ logger.add(logger.transports.Console, {
 });
 logger.level = 'debug';
 
+var NotifyChannel;
+
 client.on('ready', function(evt) {
-    console.log('running');
     logger.info('Connected');
     logger.info('Logged in as: ');
-    logger.info(client.username + ' - (' + client.id + ')');
+    logger.info(client.user.username + ' - (' + client.user.id + ')');
+    client.user.setActivity('use *comandos');
+    NotifyChannel = client.channels.find("name", "spam-comandos");
 });
 
 client.on('message', msg => {
@@ -31,16 +36,42 @@ client.on('message', msg => {
         switch (cmd) {
             // comandos
             case 'comandos':
-                msg.reply('Aqui serão listados todos os comandos disponíveis!');
+                NotifyChannel.send("Aqui serão listados todos os comandos disponíveis!");
                 break;
                 // !ping
             case 'ping':
-                msg.reply('Pong!');
+                NotifyChannel.send("Pong!");
                 break;
                 // Just add any case commands if you want to..
         }
     }
 });
 
-client.login(process.env.BOT_TOKEN);
-client.user.setGame('use *comandos')
+// var keepCalling = true;
+
+// if (keepCalling) {
+//     setInterval(function() {
+
+//         var options = {
+//             url: 'https://api.twitch.tv/helix/streams?user_login=vanhgrog',
+//             method: 'GET',
+//             headers: {
+//                 'Client-ID': 'wj5mjrbotxmh9kq2rjz0zeb95btqlj'
+//             }
+//         }
+//         request(options, function(error, response, body) {
+//             var result = JSON.parse(body);
+
+//             if (result.data) {
+//                 if (result.data[0].type == 'live') {
+//                     NotifyChannel.send('Alô alô moçada, Vanhgrog tá ao vivásso na Twitch https://www.twitch.tv/vanhgrog !');
+//                     keepCalling = false;
+//                 }
+//             }
+
+//         });
+//     }, 3000);
+// }
+
+//process.env.BOT_TOKEN | 
+client.login('NDM3NjM0MDY5NzI4MTk4NjU3.Db46YQ.ATf6OFoYbYMzjILfh7RK5eZxyNY');

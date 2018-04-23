@@ -10,6 +10,9 @@
     "dependencies": {
         "discord.io": "^2.5.3",
         "discord.js": "^11.3.2",
+        "request": "^2.85.0",
+        "twitch-api": "^0.5.0",
+        "twitch.tv": "^2.1.0",
         "winston": "^2.4.2"
     }
 }
